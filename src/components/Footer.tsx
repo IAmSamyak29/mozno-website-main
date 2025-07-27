@@ -1,5 +1,6 @@
 import React from 'react';
 import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram, Youtube } from 'lucide-react';
+import moznoLogo from '../images/Mozno_Advisory_Logo_New.png'; // Adjust the path as necessary
 
 const Footer = () => {
   const services = [
@@ -32,7 +33,7 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-3 mb-6">
               <img
-                src="/dist/Mozno Advisory Logo New.png"
+                src={moznoLogo}
                 alt="Mozno Advisory Logo"
                 className="h-12 w-auto object-contain"
                 onError={(e) => {

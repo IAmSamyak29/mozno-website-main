@@ -14,6 +14,7 @@ import {
   Phone,
   Mail
 } from 'lucide-react';
+import profilePic from '../images/Profile_Photo.jpeg'; // Adjust the path as necessary
 
 const Home = () => {
   const [formData, setFormData] = useState({
@@ -273,7 +274,7 @@ const Home = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <img
-                src="/dist//IMG_0756.jpeg"
+                src={profilePic}
                 alt="Harshal Jain"
                 className="rounded-2xl shadow-2xl"
               />

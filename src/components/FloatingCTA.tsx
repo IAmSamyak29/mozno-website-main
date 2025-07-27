@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { MessageCircle, X, Phone, Mail } from 'lucide-react';
+import moznoLogo from '../images/Mozno_Advisory_Logo_New.png'; // Adjust the path as necessary
 
 const FloatingCTA = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +26,7 @@ const FloatingCTA = () => {
           <div className="flex justify-between items-center mb-4">
             <h3 className="font-semibold text-gray-900 flex items-center">
               <img
-                src="/dist/Mozno Advisory Logo New.png"
+                src={moznoLogo}
                 alt="Logo"
                 className="h-6 w-auto mr-2 object-contain"
               />

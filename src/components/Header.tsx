@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
+import moznoLogo from '../images/Mozno_Logo_Horizontal.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,25 +22,10 @@ const Header = () => {
           <div className="flex items-center">
             <a href="#/" className="flex items-center space-x-3">
               <img
-                src="/Mozno Logo Horizontal.png"
+                src={moznoLogo}
                 alt="Mozno Advisory Logo"
                 className="h-12 w-auto object-contain"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  if (e.currentTarget.nextElementSibling) {
-                    (e.currentTarget.nextElementSibling as HTMLElement).style.display = 'block';
-                  }
-                }}
               />
-              <div className="hidden">
-                <div className="w-12 h-12 bg-teal-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">M</span>
-                </div>
-              </div>
-              <div>
-                <div className="text-xl font-bold text-gray-900">MOZNO ADVISORY</div>
-                <div className="text-sm text-teal-600">One-stop house for all your financial needs</div>
-              </div>
             </a>
           </div>
 
