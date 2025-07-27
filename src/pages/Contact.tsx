@@ -9,18 +9,43 @@ const Contact = () => {
     service: '',
     message: ''
   });
+  const [consent, setConsent] = useState(false);
+  const [touched, setTouched] = useState<{[key: string]: boolean}>({});
+
+  // Validation function
+  const isFormValid = () =>
+    formData.name.trim() &&
+    formData.email.trim() &&
+    formData.phone.trim() &&
+    formData.service.trim() &&
+    consent;
+
+  // Error helpers
+  const errors = {
+    name: touched.name && !formData.name.trim(),
+    email: touched.email && !formData.email.trim(),
+    phone: touched.phone && !formData.phone.trim(),
+    service: touched.service && !formData.service.trim(),
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!isFormValid()) return;
     console.log('Form submitted:', formData);
     alert('Thank you for your inquiry! We will contact you soon.');
     setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+    setConsent(false);
+    setTouched({});
   };
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) => {
+    setTouched({ ...touched, [e.target.name]: true });
   };
 
   return (
@@ -47,7 +72,6 @@ const Contact = () => {
             {/* Contact Information */}
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-8">Contact Information</h2>
-
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
                   <div className="bg-green-100 p-3 rounded-full">
@@ -59,7 +83,6 @@ const Contact = () => {
                     <p className="text-sm text-gray-500">Mon-Sat, 9:00 AM - 7:00 PM</p>
                   </div>
                 </div>
-
                 <div className="flex items-start space-x-4">
                   <div className="bg-blue-100 p-3 rounded-full">
                     <Mail className="h-6 w-6 text-blue-600" />
@@ -70,7 +93,6 @@ const Contact = () => {
                     <p className="text-sm text-gray-500">We'll respond within 24 hours</p>
                   </div>
                 </div>
-
                 <div className="flex items-start space-x-4">
                   <div className="bg-yellow-100 p-3 rounded-full">
                     <MapPin className="h-6 w-6 text-yellow-600" />
@@ -84,7 +106,6 @@ const Contact = () => {
                     </p>
                   </div>
                 </div>
-
                 <div className="flex items-start space-x-4">
                   <div className="bg-green-100 p-3 rounded-full">
                     <MessageCircle className="h-6 w-6 text-green-600" />
@@ -102,7 +123,6 @@ const Contact = () => {
                     </a>
                   </div>
                 </div>
-
                 <div className="flex items-start space-x-4">
                   <div className="bg-purple-100 p-3 rounded-full">
                     <Clock className="h-6 w-6 text-purple-600" />
@@ -124,8 +144,7 @@ const Contact = () => {
               <h2 className="text-3xl font-bold text-gray-900 mb-8">
                 We’re Here to Help
               </h2>
-
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                     Full Name *
@@ -137,11 +156,14 @@ const Contact = () => {
                     required
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    onBlur={handleBlur}
+                    className={`w-full px-4 py-3 border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent`}
                     placeholder="Enter your full name"
                   />
+                  {errors.name && (
+                    <p className="text-red-500 text-xs mt-1">Full Name is required.</p>
+                  )}
                 </div>
-
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                     Email Address *
@@ -153,11 +175,14 @@ const Contact = () => {
                     required
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    onBlur={handleBlur}
+                    className={`w-full px-4 py-3 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent`}
                     placeholder="Enter your email"
                   />
+                  {errors.email && (
+                    <p className="text-red-500 text-xs mt-1">Email Address is required.</p>
+                  )}
                 </div>
-
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
                     Phone Number *
@@ -169,21 +194,26 @@ const Contact = () => {
                     required
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    onBlur={handleBlur}
+                    className={`w-full px-4 py-3 border ${errors.phone ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent`}
                     placeholder="Enter your phone number"
                   />
+                  {errors.phone && (
+                    <p className="text-red-500 text-xs mt-1">Phone Number is required.</p>
+                  )}
                 </div>
-
                 <div>
                   <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
-                    Service Interested In
+                    Service Interested In *
                   </label>
                   <select
                     id="service"
                     name="service"
+                    required
                     value={formData.service}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    onBlur={handleBlur}
+                    className={`w-full px-4 py-3 border ${errors.service ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent`}
                   >
                     <option value="">Select a service</option>
                     <option value="wealth-management">Wealth Management</option>
@@ -193,8 +223,10 @@ const Contact = () => {
                     <option value="borrowing-solutions">Borrowing Solutions</option>
                     <option value="others">Others</option>
                   </select>
+                  {errors.service && (
+                    <p className="text-red-500 text-xs mt-1">Service selection is required.</p>
+                  )}
                 </div>
-
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
                     Message
@@ -209,12 +241,26 @@ const Contact = () => {
                     placeholder="Tell us about your financial goals..."
                   ></textarea>
                 </div>
-
+                <div className="flex items-start">
+                  <input
+                    type="checkbox"
+                    id="consent"
+                    name="consent"
+                    checked={consent}
+                    onChange={e => setConsent(e.target.checked)}
+                    className="mt-1 mr-2"
+                    required
+                  />
+                  <label htmlFor="consent" className="text-sm text-gray-600">
+                    By submitting this form, I agree to the <a href="/terms" className="text-green-600 underline">Terms &amp; Conditions</a> and <a href="/privacy" className="text-green-600 underline">Privacy Policy</a>.
+                  </label>
+                </div>
                 <button
                   type="submit"
-                  className="w-full bg-green-600 text-white py-4 rounded-lg font-semibold hover:bg-green-700 transition-colors"
+                  className={`w-full bg-green-600 text-white py-4 rounded-lg font-semibold transition-colors hover:bg-green-700 ${!isFormValid() ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  disabled={!isFormValid()}
                 >
-                    Get Expert Help, Fast.
+                  Get Expert Help, Fast.
                 </button>
               </form>
             </div>
@@ -229,7 +275,6 @@ const Contact = () => {
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Visit Our Office</h2>
             <p className="text-xl text-gray-600">Located in the heart of Mumbai's business district</p>
           </div>
-
           <div className="bg-gray-300 rounded-xl h-96 flex items-center justify-center">
             <p className="text-gray-600 text-lg">Interactive Google Map will be embedded here</p>
           </div>

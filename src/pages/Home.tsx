@@ -284,42 +284,42 @@ const Home = () => {
               <img
                 src={profilePic}
                 alt="Harshal Jain"
-                className="rounded-2xl shadow-2xl"
+                className="w-90 h-90 object-cover rounded-full shadow-2xl"
               />
             </div>
-            
+
             <div>
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-8">
                 Meet the Founder
               </h2>
-              <div className="mb-6">
-                <h3 className="text-2xl font-semibold text-teal-600 mb-2">Harshal Jain</h3>
-                <p className="text-lg text-gray-600 mb-4">Chartered Accountant & Founder</p>
+              <div className="mb-8">
+                <h3 className="text-3xl font-semibold text-teal-600 mb-3">Harshal Jain</h3>
+                <p className="text-2xl text-gray-600 mb-6">Chartered Accountant & Founder</p>
               </div>
-              
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                Harshal Jain is a Chartered Accountant and Founder of Mozno Advisory. With experience 
-                spanning auditing, investment advisory, tax, and compliance, Harshal brings a vision 
-                to simplify financial journeys. Mozno aims to make strategic financial advice accessible 
+
+              <p className="text-xl text-gray-700 mb-8 leading-relaxed">
+                Harshal Jain is a Chartered Accountant and Founder of Mozno Advisory. With experience
+                spanning auditing, investment advisory, tax, and compliance, Harshal brings a vision
+                to simplify financial journeys. Mozno aims to make strategic financial advice accessible
                 to every Indian.
               </p>
-              
-              <blockquote className="border-l-4 border-teal-600 pl-6 mb-8">
-                <p className="text-lg italic text-gray-700">
+
+              <blockquote className="border-l-4 border-teal-600 pl-6 mb-10">
+                <p className="text-2xl italic text-gray-800">
                   "We simplify financial lives so that you can focus on what truly matters."
                 </p>
               </blockquote>
-              
-              <div className="flex items-center space-x-4">
+
+              <div className="flex items-center space-x-6">
                 <a
                   href="https://www.linkedin.com/in/harshal-jain-979a54341"
-                  className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                  className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-lg"
                 >
                   Connect on LinkedIn
                 </a>
                 <a
                   href="#/about"
-                  className="text-teal-600 font-semibold hover:text-teal-700 transition-colors"
+                  className="text-teal-600 font-semibold hover:text-teal-700 transition-colors text-lg"
                 >
                   Learn More About Us
                 </a>
