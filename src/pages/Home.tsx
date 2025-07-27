@@ -12,7 +12,8 @@ import {
   Award,
   CheckCircle,
   Phone,
-  Mail
+  Mail,
+  ClipboardList
 } from 'lucide-react';
 import profilePic from '../images/Profile_Photo.jpeg'; // Adjust the path as necessary
 
@@ -30,35 +31,42 @@ const Home = () => {
       icon: TrendingUp,
       title: 'Wealth Management',
       description: 'End-to-end wealth advisory tailored to your goals and risk appetite',
-      href: '/services/wealth-management',
+      href: '#/services/wealth-management',
       color: 'from-green-500 to-green-600'
     },
     {
       icon: Target,
       title: 'Financial Planning',
       description: 'Comprehensive financial roadmaps covering your life goals',
-      href: '/services/financial-planning',
+      href: '#/services/financial-planning',
       color: 'from-blue-500 to-blue-600'
     },
     {
       icon: Calculator,
       title: 'Tax Planning',
       description: 'Reduce tax liabilities with personalized strategies',
-      href: '/services/tax-planning',
+      href: '#/services/tax-planning',
       color: 'from-yellow-500 to-yellow-600'
     },
     {
       icon: Shield,
       title: 'Insurance Planning',
       description: 'Protecting your health, income, and legacy',
-      href: '/services/insurance-planning',
+      href: '#/services/insurance-planning',
       color: 'from-purple-500 to-purple-600'
     },
     {
       icon: CreditCard,
       title: 'Borrowing Solutions',
       description: 'Best deals on loans with end-to-end support',
-      href: '/services/borrowing-solutions',
+      href: '#/services/borrowing-solutions',
+      color: 'from-red-500 to-red-600'
+    },
+    {
+      icon: ClipboardList,
+      title: 'Succession Planning',
+      description: 'Secure your legacy for the next generation',
+      href: '#/services/succession-planning',
       color: 'from-red-500 to-red-600'
     }
   ];
@@ -152,7 +160,7 @@ const Home = () => {
                   href="/contact"
                   className="bg-teal-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-teal-700 transition-colors text-center"
                 >
-                  Book Free Consultation
+                  Get Expert Help, Fast.
                 </a>
                 <a
                   href="tel:+919876543210"
@@ -304,13 +312,13 @@ const Home = () => {
               
               <div className="flex items-center space-x-4">
                 <a
-                  href="https://linkedin.com/in/harshaljain"
+                  href="https://www.linkedin.com/in/harshal-jain-979a54341"
                   className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
                 >
                   Connect on LinkedIn
                 </a>
                 <a
-                  href="/about"
+                  href="#/about"
                   className="text-teal-600 font-semibold hover:text-teal-700 transition-colors"
                 >
                   Learn More About Us
@@ -371,32 +379,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Partners Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Our Trusted Partners
-            </h2>
-            <p className="text-xl text-gray-600">
-              We work with leading financial institutions to bring you the best solutions
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
-            {partners.map((partner, index) => (
-              <div key={index} className="flex justify-center">
-                <img
-                  src={partner.logo}
-                  alt={partner.name}
-                  className="h-12 opacity-60 hover:opacity-100 transition-opacity duration-300"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Contact Form Section */}
       <section className="py-20 bg-gradient-to-br from-teal-600 to-teal-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -432,7 +414,7 @@ const Home = () => {
 
             <div className="bg-white rounded-2xl p-8 shadow-2xl">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                Get Your Free Consultation
+                We’re Here to Help.
               </h3>
               
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -501,6 +483,7 @@ const Home = () => {
                     <option value="tax-planning">Tax Planning</option>
                     <option value="insurance-planning">Insurance Planning</option>
                     <option value="borrowing-solutions">Borrowing Solutions</option>
+                    <option value="succession-planning">Succession Planning</option>
                   </select>
                 </div>
 
@@ -523,7 +506,7 @@ const Home = () => {
                   type="submit"
                   className="w-full bg-teal-600 text-white py-4 rounded-lg font-semibold hover:bg-teal-700 transition-colors"
                 >
-                  Book Free Consultation
+                  Get Expert Help, Fast.
                 </button>
               </form>
             </div>

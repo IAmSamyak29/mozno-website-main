@@ -10,6 +10,7 @@ import FinancialPlanning from './pages/services/FinancialPlanning';
 import TaxPlanning from './pages/services/TaxPlanning';
 import InsurancePlanning from './pages/services/InsurancePlanning';
 import BorrowingSolutions from './pages/services/BorrowingSolutions';
+import SuccessionPlanning from './pages/services/SuccessionPlanning';
 import Partners from './pages/Partners';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
@@ -33,6 +34,7 @@ function App() {
             <Route path="/services/tax-planning" element={<TaxPlanning />} />
             <Route path="/services/insurance-planning" element={<InsurancePlanning />} />
             <Route path="/services/borrowing-solutions" element={<BorrowingSolutions />} />
+            <Route path="/services/succession-planning" element={<SuccessionPlanning />} />
             <Route path="/partners" element={<Partners />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />

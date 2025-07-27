@@ -9,6 +9,11 @@ const WealthManagement = () => {
       description: 'Carefully selected mutual fund portfolios based on your risk profile and investment goals.'
     },
     {
+      icon: PieChart,
+      title: 'SIF',
+      description: 'Need to add description'
+    },
+    {
       icon: BarChart3,
       title: 'Portfolio Management Services (PMS)',
       description: 'Professional portfolio management with personalized investment strategies for high net worth individuals.'
@@ -41,28 +46,28 @@ const WealthManagement = () => {
       </section>
 
       {/* Services */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => {
-              const IconComponent = service.icon;
-              return (
-                <div key={index} className="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-2xl transition-all duration-300">
-                  <div className="bg-green-100 p-4 rounded-xl w-16 h-16 mb-6 flex items-center justify-center">
-                    <IconComponent className="h-8 w-8 text-green-600" />
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              {services.map((service, index) => {
+                const IconComponent = service.icon;
+                return (
+                  <div key={index} className="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-2xl transition-all duration-300">
+                    <div className="bg-green-100 p-4 rounded-xl w-16 h-16 mb-6 flex items-center justify-center">
+                      <IconComponent className="h-8 w-8 text-green-600" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      {service.description}
+                    </p>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {service.description}
-                  </p>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       {/* CTA Section */}
       <section className="py-20 bg-green-600">
@@ -77,7 +82,7 @@ const WealthManagement = () => {
             href="/contact"
             className="bg-white text-green-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
           >
-            Book Free Consultation
+            Get Expert Help, Fast.
           </a>
         </div>
       </section>

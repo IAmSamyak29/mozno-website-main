@@ -98,7 +98,7 @@ const Blog = () => {
                   </p>
                   
                   <a
-                    href={`/blog/${post.slug}`}
+                    href={`#//blog/${post.slug}`}
                     className="inline-flex items-center text-green-600 font-semibold hover:text-green-700 transition-colors"
                   >
                     Read More

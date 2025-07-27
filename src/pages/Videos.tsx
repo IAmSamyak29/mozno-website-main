@@ -127,7 +127,7 @@ const Videos = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
             <a
-              href="https://youtube.com/@moznoadvisory"
+              href="https://youtube.com/@awareness_initiative"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors"
@@ -135,7 +135,7 @@ const Videos = () => {
               Subscribe on YouTube
             </a>
             <a
-              href="https://instagram.com/moznoadvisory"
+              href="https://www.instagram.com/the_awareness_initiative"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-pink-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-pink-700 transition-colors"

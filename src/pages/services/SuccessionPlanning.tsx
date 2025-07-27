@@ -1,7 +1,7 @@
 import React from 'react';
 import { CreditCard, Home, Building, TrendingDown } from 'lucide-react';
 
-const BorrowingSolutions = () => {
+const SuccessionPlanning = () => {
   const services = [
     {
       icon: Home,
@@ -35,11 +35,10 @@ const BorrowingSolutions = () => {
               <CreditCard className="h-10 w-10 text-red-600" />
             </div>
             <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Borrowing Solutions
+              Succession Planning
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Loans are a tool, not a trap. We help you get the best deals on home loans, business loans, 
-              and working capital with end-to-end support.
+              Secure your legacy for the next generation.
             </p>
           </div>
         </div>
@@ -90,4 +89,4 @@ const BorrowingSolutions = () => {
   );
 };
 
-export default BorrowingSolutions;
+export default SuccessionPlanning;

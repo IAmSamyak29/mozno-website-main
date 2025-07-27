@@ -11,7 +11,8 @@ const Header = () => {
     { name: 'Financial Planning', href: '#/services/financial-planning' },
     { name: 'Tax Planning', href: '#/services/tax-planning' },
     { name: 'Insurance Planning', href: '#/services/insurance-planning' },
-    { name: 'Borrowing Solutions', href: '#/services/borrowing-solutions' }
+    { name: 'Borrowing Solutions', href: '#/services/borrowing-solutions' },
+    { name: 'Succession Planning', href: '#/services/succession-planning' }
   ];
 
   return (
@@ -68,9 +69,6 @@ const Header = () => {
               )}
             </div>
 
-            <a href="#/partners" className="text-gray-700 hover:text-green-600 font-medium transition-colors">
-              Partners
-            </a>
             <a href="#/blog" className="text-gray-700 hover:text-green-600 font-medium transition-colors">
               Blog
             </a>
@@ -85,7 +83,7 @@ const Header = () => {
               href="#/contact"
               className="bg-teal-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-teal-700 transition-colors"
             >
-              Book Free Consultation
+              Get Expert Help, Fast.
             </a>
           </nav>
 
@@ -143,7 +141,7 @@ const Header = () => {
                 href="#/contact"
                 className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors text-center"
               >
-                Book Free Consultation
+                Get Expert Help, Fast.
               </a>
             </div>
           </div>

@@ -80,7 +80,7 @@ const FloatingCTA = () => {
               href="#/contact"
               className="block w-full bg-teal-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-teal-700 transition-colors"
             >
-              Book Free Consultation
+              Get Expert Help, Fast.
             </a>
           </div>
         </div>

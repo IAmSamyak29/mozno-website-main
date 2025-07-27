@@ -87,7 +87,7 @@ const About = () => {
               </blockquote>
               
               <a
-                href="https://linkedin.com/in/harshaljain"
+                href="https://www.linkedin.com/in/harshal-jain-979a54341"
                 className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
               >
                 Connect on LinkedIn

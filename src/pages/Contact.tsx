@@ -122,7 +122,7 @@ const Contact = () => {
             {/* Contact Form */}
             <div className="bg-gray-50 rounded-2xl p-8">
               <h2 className="text-3xl font-bold text-gray-900 mb-8">
-                Book Your Free Consultation
+                We’re Here to Help
               </h2>
 
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -214,7 +214,7 @@ const Contact = () => {
                   type="submit"
                   className="w-full bg-green-600 text-white py-4 rounded-lg font-semibold hover:bg-green-700 transition-colors"
                 >
-                  Book Free Consultation
+                    Get Expert Help, Fast.
                 </button>
               </form>
             </div>

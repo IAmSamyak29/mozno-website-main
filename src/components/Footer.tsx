@@ -13,7 +13,6 @@ const Footer = () => {
 
   const quickLinks = [
     { name: 'About Us', href: '#/about' },
-    { name: 'Partners', href: '#/partners' },
     { name: 'Blog', href: '#/blog' },
     { name: 'Videos', href: '#/videos' },
     { name: 'Contact', href: '#/contact' }
@@ -60,19 +59,16 @@ const Footer = () => {
 
             {/* Social Links */}
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-green-400 transition-colors">
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-green-400 transition-colors">
+              <a href="https://x.com/hvj2503" className="text-gray-400 hover:text-green-400 transition-colors">
                 <Twitter className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-green-400 transition-colors">
+              <a href="https://www.linkedin.com/in/harshal-jain-979a54341" className="text-gray-400 hover:text-green-400 transition-colors">
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-green-400 transition-colors">
+              <a href="https://www.instagram.com/the_awareness_initiative" className="text-gray-400 hover:text-green-400 transition-colors">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-green-400 transition-colors">
+              <a href="https://youtube.com/@awareness_initiative" className="text-gray-400 hover:text-green-400 transition-colors">
                 <Youtube className="h-5 w-5" />
               </a>
             </div>

@@ -77,7 +77,7 @@ const InsurancePlanning = () => {
             href="/contact"
             className="bg-white text-purple-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
           >
-            Book Free Consultation
+            Get Expert Help, Fast.
           </a>
         </div>
       </section>
