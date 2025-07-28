@@ -16,15 +16,86 @@ import {
   ClipboardList
 } from 'lucide-react';
 import profilePic from '../images/Profile_Photo.jpeg'; // Adjust the path as necessary
+import ReCAPTCHA from 'react-google-recaptcha';
+
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzjGXyVvIx9BetbDWx_VIL24ZKjA8B4dLssWjKLMMPH8yuGo_hUaRg1vRpsxAU2iIfx/exec'; // Replace with your deployed Apps Script web app URL
+const RECAPTCHA_SITE_KEY = '6Lc5b5IrAAAAAEcsiXPLIG5Xd__O817x4N46EzsP'; // Replace with your reCAPTCHA site key
 
 const Home = () => {
-  const [formData, setFormData] = useState({
+const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     service: '',
     message: ''
   });
+  const [consent, setConsent] = useState(false);
+  const [touched, setTouched] = useState<{[key: string]: boolean}>({});
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<'success' | 'error' | ''>('');
+  const [captcha, setCaptcha] = useState<string | null>(null);
+
+  // Validation function
+  const isFormValid = () =>
+    formData.name.trim() &&
+    formData.email.trim() &&
+    formData.phone.trim() &&
+    formData.service.trim() &&
+    consent &&
+    captcha;
+
+  // Error helpers
+  const errors = {
+    name: touched.name && !formData.name.trim(),
+    email: touched.email && !formData.email.trim(),
+    phone: touched.phone && !formData.phone.trim(),
+    service: touched.service && !formData.service.trim(),
+    captcha: touched.captcha && !captcha,
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!isFormValid()) return;
+    setLoading(true);
+    setStatus('');
+    try {
+      const form = new FormData();
+      form.append('name', formData.name);
+      form.append('email', formData.email);
+      form.append('phone', formData.phone);
+      form.append('service', formData.service);
+      form.append('message', formData.message);
+      form.append('g-recaptcha-response', captcha || '');
+
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        body: form,
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+        setConsent(false);
+        setTouched({});
+        setCaptcha(null);
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
+    setLoading(false);
+  };
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) => {
+    setTouched({ ...touched, [e.target.name]: true });
+  };
 
   const services = [
     {
@@ -125,20 +196,6 @@ const Home = () => {
     }
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
-    alert('Thank you for your inquiry! We will contact you soon.');
-    setFormData({ name: '', email: '', phone: '', service: '', message: '' });
-  };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
 
   return (
     <div className="pt-16 lg:pt-20">
@@ -183,7 +240,7 @@ const Home = () => {
                     <Users className="h-6 w-6 text-teal-600" />
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-gray-900">500+</div>
+                    <div className="text-2xl font-bold text-gray-900">50+</div>
                     <div className="text-gray-600">Happy Clients</div>
                   </div>
                 </div>
@@ -412,12 +469,11 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl p-8 shadow-2xl">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                We’re Here to Help.
-              </h3>
-              
-              <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="bg-gray-50 rounded-2xl p-8">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">
+                We’re Here to Help
+              </h2>
+              <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                     Full Name *
@@ -429,11 +485,14 @@ const Home = () => {
                     required
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    onBlur={handleBlur}
+                    className={`w-full px-4 py-3 border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent`}
                     placeholder="Enter your full name"
                   />
+                  {errors.name && (
+                    <p className="text-red-500 text-xs mt-1">Full Name is required.</p>
+                  )}
                 </div>
-
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                     Email Address *
@@ -445,11 +504,14 @@ const Home = () => {
                     required
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    onBlur={handleBlur}
+                    className={`w-full px-4 py-3 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent`}
                     placeholder="Enter your email"
                   />
+                  {errors.email && (
+                    <p className="text-red-500 text-xs mt-1">Email Address is required.</p>
+                  )}
                 </div>
-
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
                     Phone Number *
@@ -461,21 +523,26 @@ const Home = () => {
                     required
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    onBlur={handleBlur}
+                    className={`w-full px-4 py-3 border ${errors.phone ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent`}
                     placeholder="Enter your phone number"
                   />
+                  {errors.phone && (
+                    <p className="text-red-500 text-xs mt-1">Phone Number is required.</p>
+                  )}
                 </div>
-
                 <div>
                   <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
-                    Service Interested In
+                    Service Interested In *
                   </label>
                   <select
                     id="service"
                     name="service"
+                    required
                     value={formData.service}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    onBlur={handleBlur}
+                    className={`w-full px-4 py-3 border ${errors.service ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent`}
                   >
                     <option value="">Select a service</option>
                     <option value="wealth-management">Wealth Management</option>
@@ -484,9 +551,12 @@ const Home = () => {
                     <option value="insurance-planning">Insurance Planning</option>
                     <option value="borrowing-solutions">Borrowing Solutions</option>
                     <option value="succession-planning">Succession Planning</option>
+                    <option value="others">Others</option>
                   </select>
+                  {errors.service && (
+                    <p className="text-red-500 text-xs mt-1">Service selection is required.</p>
+                  )}
                 </div>
-
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
                     Message
@@ -501,13 +571,43 @@ const Home = () => {
                     placeholder="Tell us about your financial goals..."
                   ></textarea>
                 </div>
-
+                <div>
+                  <ReCAPTCHA
+                    sitekey={RECAPTCHA_SITE_KEY}
+                    onChange={token => setCaptcha(token)}
+                    onExpired={() => setCaptcha(null)}
+                  />
+                  {!captcha && touched && (
+                    <p className="text-red-500 text-xs mt-1">Please complete the CAPTCHA.</p>
+                  )}
+                </div>
+                <div className="flex items-start">
+                  <input
+                    type="checkbox"
+                    id="consent"
+                    name="consent"
+                    checked={consent}
+                    onChange={e => setConsent(e.target.checked)}
+                    className="mt-1 mr-2"
+                    required
+                  />
+                  <label htmlFor="consent" className="text-sm text-gray-600">
+                    By submitting this form, I agree to the <a href="/terms" className="text-green-600 underline">Terms &amp; Conditions</a> and <a href="/privacy" className="text-green-600 underline">Privacy Policy</a>.
+                  </label>
+                </div>
                 <button
                   type="submit"
-                  className="w-full bg-teal-600 text-white py-4 rounded-lg font-semibold hover:bg-teal-700 transition-colors"
+                  className={`w-full bg-green-600 text-white py-4 rounded-lg font-semibold transition-colors hover:bg-green-700 ${!isFormValid() || loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  disabled={!isFormValid() || loading}
                 >
-                  Get Expert Help, Fast.
+                  {loading ? 'Submitting...' : 'Get Expert Help, Fast.'}
                 </button>
+                {status === 'success' && (
+                  <p className="text-green-600 text-sm mt-4">Thank you for your inquiry! We will contact you soon.</p>
+                )}
+                {status === 'error' && (
+                  <p className="text-red-600 text-sm mt-4">Submission failed. Please try again later.</p>
+                )}
               </form>
             </div>
           </div>

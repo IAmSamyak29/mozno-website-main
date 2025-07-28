@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Clock, MessageCircle } from 'lucide-react';
+import ReCAPTCHA from 'react-google-recaptcha';
+
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzjGXyVvIx9BetbDWx_VIL24ZKjA8B4dLssWjKLMMPH8yuGo_hUaRg1vRpsxAU2iIfx/exec'; // Replace with your deployed Apps Script web app URL
+const RECAPTCHA_SITE_KEY = '6Lc5b5IrAAAAAEcsiXPLIG5Xd__O817x4N46EzsP'; // Replace with your reCAPTCHA site key
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +15,9 @@ const Contact = () => {
   });
   const [consent, setConsent] = useState(false);
   const [touched, setTouched] = useState<{[key: string]: boolean}>({});
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<'success' | 'error' | ''>('');
+  const [captcha, setCaptcha] = useState<string | null>(null);
 
   // Validation function
   const isFormValid = () =>
@@ -18,7 +25,8 @@ const Contact = () => {
     formData.email.trim() &&
     formData.phone.trim() &&
     formData.service.trim() &&
-    consent;
+    consent &&
+    captcha;
 
   // Error helpers
   const errors = {
@@ -26,16 +34,41 @@ const Contact = () => {
     email: touched.email && !formData.email.trim(),
     phone: touched.phone && !formData.phone.trim(),
     service: touched.service && !formData.service.trim(),
+    captcha: touched.captcha && !captcha,
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!isFormValid()) return;
-    console.log('Form submitted:', formData);
-    alert('Thank you for your inquiry! We will contact you soon.');
-    setFormData({ name: '', email: '', phone: '', service: '', message: '' });
-    setConsent(false);
-    setTouched({});
+    setLoading(true);
+    setStatus('');
+    try {
+      const form = new FormData();
+      form.append('name', formData.name);
+      form.append('email', formData.email);
+      form.append('phone', formData.phone);
+      form.append('service', formData.service);
+      form.append('message', formData.message);
+      form.append('g-recaptcha-response', captcha || '');
+
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        body: form,
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+        setConsent(false);
+        setTouched({});
+        setCaptcha(null);
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
+    setLoading(false);
   };
 
   const handleInputChange = (
@@ -221,6 +254,7 @@ const Contact = () => {
                     <option value="tax-planning">Tax Planning</option>
                     <option value="insurance-planning">Insurance Planning</option>
                     <option value="borrowing-solutions">Borrowing Solutions</option>
+                    <option value="succession-planning">Succession Planning</option>
                     <option value="others">Others</option>
                   </select>
                   {errors.service && (
@@ -241,6 +275,16 @@ const Contact = () => {
                     placeholder="Tell us about your financial goals..."
                   ></textarea>
                 </div>
+                <div>
+                  <ReCAPTCHA
+                    sitekey={RECAPTCHA_SITE_KEY}
+                    onChange={token => setCaptcha(token)}
+                    onExpired={() => setCaptcha(null)}
+                  />
+                  {!captcha && touched && (
+                    <p className="text-red-500 text-xs mt-1">Please complete the CAPTCHA.</p>
+                  )}
+                </div>
                 <div className="flex items-start">
                   <input
                     type="checkbox"
@@ -257,11 +301,17 @@ const Contact = () => {
                 </div>
                 <button
                   type="submit"
-                  className={`w-full bg-green-600 text-white py-4 rounded-lg font-semibold transition-colors hover:bg-green-700 ${!isFormValid() ? 'opacity-50 cursor-not-allowed' : ''}`}
-                  disabled={!isFormValid()}
+                  className={`w-full bg-green-600 text-white py-4 rounded-lg font-semibold transition-colors hover:bg-green-700 ${!isFormValid() || loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  disabled={!isFormValid() || loading}
                 >
-                  Get Expert Help, Fast.
+                  {loading ? 'Submitting...' : 'Get Expert Help, Fast.'}
                 </button>
+                {status === 'success' && (
+                  <p className="text-green-600 text-sm mt-4">Thank you for your inquiry! We will contact you soon.</p>
+                )}
+                {status === 'error' && (
+                  <p className="text-red-600 text-sm mt-4">Submission failed. Please try again later.</p>
+                )}
               </form>
             </div>
           </div>
