@@ -6,5 +6,5 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
-  base: '/mozno-website/', // 👈 fixes GitHub Pages 404
+  base: '/mozno-website-main/', // 👈 fixes GitHub Pages 404
 });
