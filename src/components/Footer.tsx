@@ -124,8 +124,8 @@ const Footer = () => {
 
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-green-400 flex-shrink-0" />
-                <a href="mailto:ceo@mozno.in" className="text-gray-300 hover:text-green-400 transition-colors">
-                  ceo@mozno.in
+                <a href="mailto:contact@mozno.in" className="text-gray-300 hover:text-green-400 transition-colors">
+                  contact@mozno.in
                 </a>
               </div>
             </div>

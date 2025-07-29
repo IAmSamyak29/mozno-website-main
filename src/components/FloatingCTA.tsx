@@ -53,13 +53,13 @@ const FloatingCTA = () => {
             </a>
 
             <a
-              href="mailto:ceo@mozno.in"
+              href="mailto:contact@mozno.in"
               className="flex items-center space-x-3 p-3 rounded-lg bg-blue-50 hover:bg-blue-100 transition-colors"
             >
               <Mail className="h-5 w-5 text-blue-600" />
               <div>
                 <div className="font-medium text-gray-900">Email Us</div>
-                <div className="text-sm text-gray-600">ceo@mozno.in</div>
+                <div className="text-sm text-gray-600">contact@mozno.in</div>
               </div>
             </a>
 

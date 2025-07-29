@@ -1,0 +1,110 @@
+/* EstatePlanningPage.css */
+
+article.prose {
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  color: #22223b;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(34, 34, 59, 0.06);
+  margin: 2rem auto;
+  max-width: 800px;
+  line-height: 1.7;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  font-weight: 700;
+  color: #2a2a40;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+}
+
+.prose h1 {
+  font-size: 2.2rem;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 0.3em;
+}
+
+.prose h2 {
+  font-size: 1.5rem;
+}
+
+.prose h3 {
+  font-size: 1.2rem;
+}
+
+.prose p {
+  margin: 1em 0;
+}
+
+.prose blockquote {
+  border-left: 4px solid #6c63ff;
+  background: #f6f6ff;
+  color: #444;
+  padding: 0.7em 1.2em;
+  margin: 1.5em 0;
+  font-style: italic;
+}
+
+.prose ul, .prose ol {
+  margin: 1em 0 1em 2em;
+}
+
+.prose li {
+  margin-bottom: 0.5em;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 0.98em;
+}
+
+.prose th, .prose td {
+  border: 1px solid #e0e0e0;
+  padding: 0.6em 0.8em;
+  text-align: left;
+}
+
+.prose th {
+  background: #f3f3fa;
+  font-weight: 600;
+}
+
+.prose tr:nth-child(even) {
+  background: #fafaff;
+}
+
+.prose a {
+  color: #6c63ff;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.prose strong {
+  color: #2a2a40;
+  font-weight: 700;
+}
+
+.prose code {
+  background: #f4f4f4;
+  color: #d6336c;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.97em;
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 2em 0;
+}
+
+@media (max-width: 600px) {
+  article.prose {
+    padding: 1em;
+    font-size: 1em;
+  }
+  .prose h1 { font-size: 1.4rem; }
+  .prose h2 { font-size: 1.1rem; }
+}
