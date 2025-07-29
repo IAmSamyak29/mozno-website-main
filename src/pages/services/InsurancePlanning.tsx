@@ -1,22 +1,31 @@
 import React from 'react';
-import { Shield, Heart, Car } from 'lucide-react';
+import { Shield, Heart, Car, ArrowRight } from 'lucide-react';
 
 const InsurancePlanning = () => {
   const services = [
     {
       icon: Shield,
-      title: 'Term Insurance',
-      description: 'Comprehensive life insurance coverage to protect your family\'s financial future.'
+      title: 'Term & Life Insurance Advisory',
+      description: 'Comprehensive life insurance coverage to protect your family\'s financial future.',
+      href: '#/blog/term-life-insurance'
     },
     {
       icon: Heart,
-      title: 'Health Insurance',
-      description: 'Medical insurance plans to safeguard against rising healthcare costs.'
+      title: 'Health & Medical Insurance',
+      description: 'Medical insurance plans to safeguard against rising healthcare costs.',
+      href: '#/blog/health-insurance'
     },
     {
       icon: Car,
       title: 'Motor & General Insurance',
-      description: 'Vehicle insurance and other general insurance products for complete protection.'
+      description: 'Vehicle insurance and other general insurance products for complete protection.',
+      href: '#/blog/motor-general-insurance'
+    },
+    {
+      icon: Car,
+      title: 'Insurance Portfolio Review & Optimization',
+      description: 'Vehicle insurance and other general insurance products for complete protection.',
+      href: '#/blog/insurance-portfolio-review'
     }
   ];
 
@@ -43,7 +52,7 @@ const InsurancePlanning = () => {
       {/* Services */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {services.map((service, index) => {
               const IconComponent = service.icon;
               return (
@@ -57,6 +66,13 @@ const InsurancePlanning = () => {
                   <p className="text-gray-600 leading-relaxed">
                     {service.description}
                   </p>
+                  <a
+                    href={service.href}
+                    className="inline-flex items-center text-teal-600 font-semibold hover:text-teal-700 transition-colors"
+                  >
+                    Learn More
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                </a>
                 </div>
               );
             })}

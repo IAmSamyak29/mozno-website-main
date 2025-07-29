@@ -1,17 +1,25 @@
 import React from 'react';
-import { Calculator, FileText, TrendingDown } from 'lucide-react';
+import { Calculator, FileText, TrendingDown, ArrowRight } from 'lucide-react';
 
 const TaxPlanning = () => {
   const services = [
     {
       icon: Calculator,
-      title: 'Direct Tax Advisory',
-      description: 'Income tax planning, optimization strategies, and compliance for individuals and businesses.'
+      title: 'Direct Tax Planning & ITR Filing',
+      description: 'Income tax planning, optimization strategies, and compliance for individuals and businesses.',
+      href: '#/blog/direct-tax-planning'
     },
     {
       icon: FileText,
-      title: 'GST/Indirect Tax',
-      description: 'GST registration, filing, compliance, and optimization for businesses of all sizes.'
+      title: 'Indirect Tax Planning & GST Compliance',
+      description: 'GST registration, filing, compliance, and optimization for businesses of all sizes.',
+      href: '#/blog/indirect-tax-planning'
+    },
+    {
+      icon: FileText,
+      title: 'Tax-Saving Investment Strategies',
+      description: 'GST registration, filing, compliance, and optimization for businesses of all sizes.',
+      href: '#/blog/tax-saving-investment-strategies'
     }
   ];
 
@@ -38,7 +46,7 @@ const TaxPlanning = () => {
       {/* Services */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {services.map((service, index) => {
               const IconComponent = service.icon;
               return (
@@ -52,6 +60,13 @@ const TaxPlanning = () => {
                   <p className="text-gray-600 leading-relaxed">
                     {service.description}
                   </p>
+                  <a
+                    href={service.href}
+                    className="inline-flex items-center text-teal-600 font-semibold hover:text-teal-700 transition-colors"
+                  >
+                    Learn More
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                </a>
                 </div>
               );
             })}

@@ -1,22 +1,31 @@
 import React from 'react';
-import { Target, Users, TrendingUp, Shield } from 'lucide-react';
+import { Target, Users, TrendingUp, Shield, ArrowRight } from 'lucide-react';
 
 const FinancialPlanning = () => {
   const services = [
     {
       icon: Target,
       title: 'Goal-Based Planning',
-      description: 'Structured planning for specific life goals like buying a home, child education, or dream vacation.'
+      description: 'Structured planning for specific life goals like buying a home, child education, or dream vacation.',
+      href: '#/blog/goal-based-planning'
+    },
+    {
+      icon: Users,
+      title: 'Strategic Asset Allocation',
+      description: 'Description needs to be added',
+      href: '#/blog/strategic-asset-allocation'
     },
     {
       icon: TrendingUp,
       title: 'Retirement Planning',
-      description: 'Comprehensive retirement corpus building strategies to ensure financial independence in your golden years.'
+      description: 'Comprehensive retirement corpus building strategies to ensure financial independence in your golden years.',
+      href: '#/blog/retirement-planning'
     },
     {
       icon: Users,
-      title: 'Succession Planning',
-      description: 'Estate planning and wealth transfer strategies to secure your family\'s financial future.'
+      title: 'Cash Flow Management & Budgeting',
+      description: 'Description needs to be added',
+      href: '#/blog/cash-flow-management'
     }
   ];
 
@@ -43,7 +52,7 @@ const FinancialPlanning = () => {
       {/* Services */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {services.map((service, index) => {
               const IconComponent = service.icon;
               return (
@@ -57,6 +66,13 @@ const FinancialPlanning = () => {
                   <p className="text-gray-600 leading-relaxed">
                     {service.description}
                   </p>
+                  <a
+                      href={service.href}
+                      className="inline-flex items-center text-teal-600 font-semibold hover:text-teal-700 transition-colors"
+                    >
+                      Learn More
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                  </a>
                 </div>
               );
             })}

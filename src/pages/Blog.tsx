@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, Calendar, User } from 'lucide-react';
-import EstatePlanningPage from '../blogs/EstatePlanningPage';
+import MutualFundsPage from '../blogs/1.1mutual-funds.tsx';
 
 const Blog = () => {
   const blogPosts = [
@@ -54,7 +54,7 @@ const Blog = () => {
     }
   ];
 
-  return (<EstatePlanningPage/>);
+  return (<MutualFundsPage/>);
 
 //   return (
 //     <div className="pt-16 lg:pt-20">

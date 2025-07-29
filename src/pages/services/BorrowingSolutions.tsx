@@ -1,27 +1,31 @@
 import React from 'react';
-import { CreditCard, Home, Building, TrendingDown } from 'lucide-react';
+import { CreditCard, Home, Building, TrendingDown, ArrowRight } from 'lucide-react';
 
 const BorrowingSolutions = () => {
   const services = [
     {
       icon: Home,
-      title: 'Home Loans',
-      description: 'Best interest rates and terms for your dream home purchase or construction.'
+      title: 'Home Loans & Property Finance',
+      description: 'Best interest rates and terms for your dream home purchase or construction.',
+      href: '#/blog/home-loans'
     },
     {
       icon: Building,
-      title: 'Loan Against Property (LAP)',
-      description: 'Unlock the value of your property for business or personal needs.'
+      title: 'Business Loans & MSME Finance',
+      description: 'Unlock the value of your property for business or personal needs.',
+      href: '#/blog/business-loans'
     },
     {
       icon: CreditCard,
-      title: 'MSME Loans',
-      description: 'Business loans and working capital solutions for small and medium enterprises.'
+      title: 'Personal Loans & Consumer Finance',
+      description: 'Business loans and working capital solutions for small and medium enterprises.',
+      href: '#/blog/personal-loans'
     },
     {
       icon: TrendingDown,
-      title: 'Stressed Asset Funding',
-      description: 'Specialized funding solutions for distressed assets and restructuring needs.'
+      title: 'Builder Finance & Stressed Asset Funding',
+      description: 'Specialized funding solutions for distressed assets and restructuring needs.',
+      href: '#/blog/builder-finance'
     }
   ];
 
@@ -62,6 +66,13 @@ const BorrowingSolutions = () => {
                   <p className="text-gray-600 leading-relaxed">
                     {service.description}
                   </p>
+                  <a
+                    href={service.href}
+                    className="inline-flex items-center text-teal-600 font-semibold hover:text-teal-700 transition-colors"
+                  >
+                    Learn More
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                </a>
                 </div>
               );
             })}

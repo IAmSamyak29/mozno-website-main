@@ -1,27 +1,31 @@
 import React from 'react';
-import { CreditCard, Home, Building, TrendingDown } from 'lucide-react';
+import { CreditCard, Home, Building, TrendingDown, ArrowRight } from 'lucide-react';
 
 const SuccessionPlanning = () => {
   const services = [
     {
       icon: Home,
-      title: 'Home Loans',
-      description: 'Best interest rates and terms for your dream home purchase or construction.'
+      title: 'Estate Planning & Wealth Transfer',
+      description: 'Best interest rates and terms for your dream home purchase or construction.',
+      href: '#/blog/estate-planning-wealth-transfer'
     },
     {
       icon: Building,
-      title: 'Loan Against Property (LAP)',
-      description: 'Unlock the value of your property for business or personal needs.'
+      title: 'Will Drafting & Trust Services',
+      description: 'Unlock the value of your property for business or personal needs.',
+      href: '#/blog/will-drafting-trust-services'
     },
     {
       icon: CreditCard,
-      title: 'MSME Loans',
-      description: 'Business loans and working capital solutions for small and medium enterprises.'
+      title: 'Family Governance & Legacy Planning',
+      description: 'Business loans and working capital solutions for small and medium enterprises.',
+      href: '#/blog/family-governance-legacy-planning'
     },
     {
       icon: TrendingDown,
-      title: 'Stressed Asset Funding',
-      description: 'Specialized funding solutions for distressed assets and restructuring needs.'
+      title: 'Probate & Estate Administration',
+      description: 'Specialized funding solutions for distressed assets and restructuring needs.',
+      href: '#/blog/probate-estate-administration'
     }
   ];
 
@@ -61,6 +65,13 @@ const SuccessionPlanning = () => {
                   <p className="text-gray-600 leading-relaxed">
                     {service.description}
                   </p>
+                  <a
+                    href={service.href}
+                    className="inline-flex items-center text-teal-600 font-semibold hover:text-teal-700 transition-colors"
+                  >
+                    Learn More
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                </a>
                 </div>
               );
             })}

@@ -1,42 +1,43 @@
-/* EstatePlanningPage.css */
+/* src/blogs/BlogPage.css */
 
-article.prose {
+.blog-page {
   font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
   color: #22223b;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 2px 12px rgba(34, 34, 59, 0.06);
   margin: 2rem auto;
-  max-width: 800px;
+  max-width: 1200px; /* Increase this value as needed */
   line-height: 1.7;
+  padding: 2em 2.5em;
 }
 
-.prose h1, .prose h2, .prose h3, .prose h4 {
+.blog-page__heading {
   font-weight: 700;
   color: #2a2a40;
   margin-top: 2em;
   margin-bottom: 0.5em;
 }
 
-.prose h1 {
+.blog-page__heading--h1 {
   font-size: 2.2rem;
   border-bottom: 2px solid #e0e0e0;
   padding-bottom: 0.3em;
 }
 
-.prose h2 {
+.blog-page__heading--h2 {
   font-size: 1.5rem;
 }
 
-.prose h3 {
+.blog-page__heading--h3 {
   font-size: 1.2rem;
 }
 
-.prose p {
+.blog-page__paragraph {
   margin: 1em 0;
 }
 
-.prose blockquote {
+.blog-page__blockquote {
   border-left: 4px solid #6c63ff;
   background: #f6f6ff;
   color: #444;
@@ -45,48 +46,49 @@ article.prose {
   font-style: italic;
 }
 
-.prose ul, .prose ol {
+.blog-page__list {
   margin: 1em 0 1em 2em;
 }
 
-.prose li {
+.blog-page__list-item {
   margin-bottom: 0.5em;
 }
 
-.prose table {
+.blog-page__table {
   width: 100%;
   border-collapse: collapse;
   margin: 1.5em 0;
   font-size: 0.98em;
 }
 
-.prose th, .prose td {
+.blog-page__th,
+.blog-page__td {
   border: 1px solid #e0e0e0;
   padding: 0.6em 0.8em;
   text-align: left;
 }
 
-.prose th {
+.blog-page__th {
   background: #f3f3fa;
   font-weight: 600;
 }
 
-.prose tr:nth-child(even) {
+.blog-page__tr--even {
   background: #fafaff;
 }
 
-.prose a {
+.blog-page__link {
   color: #6c63ff;
   text-decoration: underline;
   font-weight: 500;
 }
 
-.prose strong {
+.blog-page__strong {
   color: #2a2a40;
   font-weight: 700;
 }
 
-.prose code {
+.blog-page__code {
   background: #f4f4f4;
   color: #d6336c;
   padding: 0.2em 0.4em;
@@ -94,17 +96,17 @@ article.prose {
   font-size: 0.97em;
 }
 
-.prose hr {
+.blog-page__hr {
   border: none;
   border-top: 1px solid #e0e0e0;
   margin: 2em 0;
 }
 
 @media (max-width: 600px) {
-  article.prose {
+  .blog-page {
     padding: 1em;
     font-size: 1em;
   }
-  .prose h1 { font-size: 1.4rem; }
-  .prose h2 { font-size: 1.1rem; }
+  .blog-page__heading--h1 { font-size: 1.4rem; }
+  .blog-page__heading--h2 { font-size: 1.1rem; }
 }

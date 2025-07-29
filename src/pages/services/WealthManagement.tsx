@@ -1,27 +1,31 @@
 import React from 'react';
-import { TrendingUp, PieChart, BarChart3, Target } from 'lucide-react';
+import { TrendingUp, PieChart, BarChart3, Target, ArrowRight } from 'lucide-react';
 
 const WealthManagement = () => {
   const services = [
     {
       icon: PieChart,
       title: 'Mutual Funds',
-      description: 'Carefully selected mutual fund portfolios based on your risk profile and investment goals.'
+      description: 'Begin with just ₹500 SIP. Professionally-managed, diversified portfolios that grow with your goals—equity, debt, or hybrid.',
+      href: '#/blog/mutual-funds'
     },
     {
       icon: PieChart,
-      title: 'SIF',
-      description: 'Need to add description'
+      title: 'Specialized Investment Fund (SIF)',
+      description: 'Entry at ₹10–25 lakh. Concentrated vehicles offering early-stage tech, green infra, or fractional real-estate exposure for 18-25 % IRR targets.',
+      href: '#/blog/sif'
     },
     {
       icon: BarChart3,
       title: 'Portfolio Management Services (PMS)',
-      description: 'Professional portfolio management with personalized investment strategies for high net worth individuals.'
+      description: 'Minimum ticket ₹50 lakh. Personalised stock portfolios—flexi-cap, quant, or ESG—managed by seasoned fund managers for alpha generation.',
+      href: '#/blog/pms'
     },
     {
       icon: Target,
       title: 'Alternative Investment Funds (AIFs)',
-      description: 'Exclusive investment opportunities in AIFs for sophisticated investors seeking higher returns.'
+      description: '₹1 crore+ only. Access pre-IPO unicorns, distressed debt, or private equity via SEBI-regulated funds targeting 20 %+ IRR with institutional governance.',
+      href: '#/blog/aif'
     }
   ];
 
@@ -62,6 +66,13 @@ const WealthManagement = () => {
                     <p className="text-gray-600 leading-relaxed">
                       {service.description}
                     </p>
+                    <a
+                        href={service.href}
+                        className="inline-flex items-center text-teal-600 font-semibold hover:text-teal-700 transition-colors"
+                      >
+                        Learn More
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                    </a>
                   </div>
                 );
               })}
