@@ -355,7 +355,7 @@ const [formData, setFormData] = useState({
               </div>
 
               <p className="text-xl text-gray-700 mb-8 leading-relaxed">
-                Harshal V Jain is a Chartered Accountant and Founder of Mozno Advisory. With experience
+                Harshal Jain is a Chartered Accountant and Founder of Mozno Advisory. With experience
                 spanning auditing, investment advisory, tax, and compliance, Harshal brings a vision
                 to simplify financial journeys. Mozno aims to make strategic financial advice accessible
                 to every Indian.
