@@ -60,10 +60,10 @@ const Videos = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Financial Education Videos
+              Financial Insights
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Learn about investments, tax planning, insurance, and more through our expert-led video content. 
+              Learn about investments, tax planning, insurance, and more through our expert-led content.
               Make informed financial decisions with practical insights.
             </p>
           </div>

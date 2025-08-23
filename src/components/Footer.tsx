@@ -1,6 +1,6 @@
 import React from 'react';
 import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram, Youtube } from 'lucide-react';
-import moznoLogo from '../images/Mozno_Advisory_Logo_New.png'; // Adjust the path as necessary
+import moznoLogo from '../images/Mozno_Advisory_Logo_Dark.png'; // Adjust the path as necessary
 
 const Footer = () => {
   const services = [
@@ -13,8 +13,8 @@ const Footer = () => {
 
   const quickLinks = [
     { name: 'About Us', href: '#/about' },
-    { name: 'Blog', href: '#/blog' },
-    { name: 'Videos', href: '#/videos' },
+    { name: 'Calculators', href: '#/blog' },
+    { name: 'Insights', href: '#/videos' },
     { name: 'Contact', href: '#/contact' }
   ];
 
@@ -34,7 +34,7 @@ const Footer = () => {
               <img
                 src={moznoLogo}
                 alt="Mozno Advisory Logo"
-                className="h-12 w-auto object-contain"
+                className="h-45 w-auto object-contain"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
                   if (e.currentTarget.nextElementSibling) {
@@ -47,14 +47,9 @@ const Footer = () => {
                   <span className="text-white font-bold text-xl">M</span>
                 </div>
               </div>
-              <div>
-                <div className="text-xl font-bold">MOZNO ADVISORY</div>
-                <div className="text-sm text-teal-400">One-stop house for all your financial needs</div>
-              </div>
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Founded by CA Harshal Jain, Mozno Advisory simplifies your financial journey with
-              expert guidance in wealth management, tax planning, and comprehensive financial solutions.
+
             </p>
 
             {/* Social Links */}

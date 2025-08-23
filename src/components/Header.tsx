@@ -70,20 +70,17 @@ const Header = () => {
             </div>
 
             <a href="#/blog" className="text-gray-700 hover:text-green-600 font-medium transition-colors">
-              Blog
+              Calculators
             </a>
             <a href="#/videos" className="text-gray-700 hover:text-green-600 font-medium transition-colors">
-              Videos
-            </a>
-            <a href="#/contact" className="text-gray-700 hover:text-green-600 font-medium transition-colors">
-              Contact
+              Insights
             </a>
 
             <a
               href="#/contact"
               className="bg-teal-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-teal-700 transition-colors"
             >
-              Get Expert Help, Fast.
+              Get Expert Help
             </a>
           </nav>
 
@@ -131,7 +128,7 @@ const Header = () => {
                 Blog
               </a>
               <a href="#/videos" className="text-gray-700 hover:text-green-600 font-medium">
-                Videos
+                Insights
               </a>
               <a href="#/contact" className="text-gray-700 hover:text-green-600 font-medium">
                 Contact
@@ -141,7 +138,7 @@ const Header = () => {
                 href="#/contact"
                 className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors text-center"
               >
-                Get Expert Help, Fast.
+                Get Expert Help
               </a>
             </div>
           </div>
